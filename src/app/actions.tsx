@@ -1,6 +1,8 @@
 "use server";
 
-const isAllowed = async ({
+// 3 ENDPOINTS TO GET STARTED
+
+export const entitled = async ({
   customerId,
   featureId,
 }: {
@@ -23,7 +25,7 @@ const isAllowed = async ({
   return data.allowed;
 };
 
-const sendEvent = async ({
+export const sendEvent = async ({
   customerId,
   featureId,
 }: {
@@ -43,16 +45,46 @@ const sendEvent = async ({
   });
 };
 
-export const sendMessage = async (customerId: string) => {
-  const featureId = "chat-messages";
+export const attachProduct = async ({
+  customerId,
+  productId,
+}: {
+  customerId: string;
+  productId: string;
+}) => {
+  const response = await fetch(`https://api.useautumn.com/v1/attach`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.AUTUMN_SECRET_KEY}`,
+    },
+    body: JSON.stringify({
+      customer_id: customerId,
+      product_id: productId,
+    }),
+  });
 
-  // 1. Check if user has access to feature
-  const allowed = await isAllowed({ customerId, featureId });
-  if (!allowed) {
-    return false;
+  const data = await response.json();
+  if (response.status !== 200) {
+    throw new Error(data.message || "Failed to attach pro product");
   }
+  return data;
+};
 
-  // 2. Send event
-  await sendEvent({ customerId, featureId });
-  return true;
+// ADDITIONAL ENDPOINT TO FETCH CUSTOMER DETAILS
+
+export const getOrCreateCustomer = async (customerId: string) => {
+  const response = await fetch(`https://api.useautumn.com/v1/customers`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.AUTUMN_SECRET_KEY}`,
+    },
+    body: JSON.stringify({
+      id: customerId,
+    }),
+  });
+
+  const data = await response.json();
+  return data;
 };
