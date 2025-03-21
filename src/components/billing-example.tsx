@@ -1,19 +1,31 @@
 "use client";
 
+import { attachProduct } from "@/app/autumn-functions";
 import { CreditCard } from "lucide-react";
+import { toast } from "sonner";
 
 export default function CustomerDetailsExample({
   customerData,
-  onUpgradeClicked,
 }: {
   customerData: any;
-  onUpgradeClicked: () => void;
 }) {
   const { customer, entitlements, products } = customerData;
   const getEntitlement = (featureId: string) => {
     return entitlements.find(
       (entitlement: any) => entitlement.feature_id === featureId
     );
+  };
+
+  const upgradeClicked = async () => {
+    try {
+      const res = await attachProduct({
+        customerId: customer.id,
+        productId: "pro",
+      });
+      window.open(res.checkout_url, "_blank");
+    } catch (error: any) {
+      toast.error(`${error}`);
+    }
   };
 
   const chatMessages = getEntitlement("chat-messages");
@@ -84,7 +96,7 @@ export default function CustomerDetailsExample({
         {!hasPro && (
           <button
             className="w-full bg-purple-600 hover:bg-purple-700 transition-colors"
-            onClick={onUpgradeClicked}
+            onClick={upgradeClicked}
           >
             Upgrade to Pro
           </button>

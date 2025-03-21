@@ -4,6 +4,8 @@
 
 This template demonstrates how you can set up pricing in just 3 lines of code using Autumn. The example used is a simple AI chat message app.
 
+View the example app here: https://nextjs-autumn-template.vercel.app/
+
 ## Getting Started
 
 1. Clone the repository:

@@ -1,10 +1,35 @@
+import { sendEvent } from "@/app/autumn-functions";
+import { entitled } from "@/app/autumn-functions";
 import { MessageSquare } from "lucide-react";
+import { toast } from "sonner";
 
 export default function EntitledExampleCard({
-  onSendMessageClicked,
+  customerId,
+  featureId,
+  fetchCustomer,
 }: {
-  onSendMessageClicked: () => void;
+  customerId: string;
+  featureId: string;
+  fetchCustomer: () => void;
 }) {
+  const sendMessageClicked = async () => {
+    const allowed = await entitled({
+      customerId,
+      featureId,
+    });
+
+    if (!allowed) {
+      toast.error("You're out of messages!");
+      return;
+    }
+
+    await sendEvent({
+      customerId,
+      featureId,
+    });
+
+    toast.success("Message sent!");
+  };
   return (
     <div className="border rounded-lg bg-white overflow-hidden flex flex-col">
       <div className="border-b p-6">
@@ -35,7 +60,10 @@ export default function EntitledExampleCard({
       <div className="p-6 pt-0">
         <button
           className="w-full bg-purple-600 hover:bg-purple-700 transition-colors"
-          onClick={onSendMessageClicked}
+          onClick={async () => {
+            await sendMessageClicked();
+            await fetchCustomer();
+          }}
         >
           Send Test Message
         </button>

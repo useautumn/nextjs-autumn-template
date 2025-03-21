@@ -1,12 +1,6 @@
 "use client";
 
-import { toast } from "sonner";
-import {
-  getOrCreateCustomer,
-  attachProduct,
-  sendEvent,
-  entitled,
-} from "./actions";
+import { getOrCreateCustomer } from "./autumn-functions";
 import { useState } from "react";
 import { useEffect } from "react";
 import Intro from "@/components/intro";
@@ -32,51 +26,17 @@ export default function Home() {
     return <></>;
   }
 
-  const upgradeClicked = async () => {
-    try {
-      const res = await attachProduct({
-        customerId: CUSTOMER_ID,
-        productId: "pro",
-      });
-      window.open(res.checkout_url, "_blank");
-    } catch (error: any) {
-      toast.error(`${error}`);
-    }
-  };
-
-  const sendMessageClicked = async () => {
-    const allowed = await entitled({
-      customerId: CUSTOMER_ID,
-      featureId: FEATURE_ID,
-    });
-
-    if (!allowed) {
-      toast.error("You're out of messages!");
-      return;
-    }
-
-    await sendEvent({
-      customerId: CUSTOMER_ID,
-      featureId: FEATURE_ID,
-    });
-    toast.success("Message sent!");
-  };
-
   return (
     <div className="min-h-screen w-full p-6 flex flex-col gap-8 max-w-7xl mx-auto">
       <Intro />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <EntitledExampleCard
-          onSendMessageClicked={async () => {
-            await sendMessageClicked();
-            await fetchCustomer();
-          }}
+          customerId={CUSTOMER_ID}
+          featureId={FEATURE_ID}
+          fetchCustomer={fetchCustomer}
         />
-        <CustomerDetailsExample
-          customerData={customerData}
-          onUpgradeClicked={upgradeClicked}
-        />
+        <CustomerDetailsExample customerData={customerData} />
       </div>
     </div>
   );
