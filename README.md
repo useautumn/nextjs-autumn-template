@@ -9,13 +9,17 @@ View the example app here: https://nextjs-autumn-template.vercel.app/
 ## Getting Started
 
 1. Clone the repository:
+
 ```bash
-git clone https://github.com/johnyeocx/nextjs-autumn-template
+git clone https://github.com/useautumn/nextjs-autumn-template.git
+npm install
+npm run dev
 ```
 
 2. Create an account at [app.useautumn.com](https://app.useautumn.com)
 
 3. Get your Autumn secret key from the [sandbox environment](https://app.useautumn.com/sandbox/dev) and add it to `.env.local`:
+
 ```env
 AUTUMN_SECRET_KEY=am_sk_test_OAFUOL0meFCjpMMmFeU13gHnrEOGAHWp2YTLECyY7k
 ```
@@ -25,13 +29,15 @@ AUTUMN_SECRET_KEY=am_sk_test_OAFUOL0meFCjpMMmFeU13gHnrEOGAHWp2YTLECyY7k
 ## Understanding the Implementation
 
 This template implements a simple AI chat message app where users can:
+
 - Send messages (with usage limits)
 - Upgrade to a pro plan
 - View their usage and subscription details
 
 ### Key Endpoints
 
-1. **Check feature access** (`/entitled`)
+1. **Check if a user can access a feature** (`/entitled`)
+
 ```typescript
 // Check if user can send a message
 const allowed = await entitled({
@@ -45,7 +51,8 @@ if (!allowed) {
 }
 ```
 
-2. **Track usage** (`/events`)
+2. **Track a user's usage of a feature** (`/events`)
+
 ```typescript
 // Record that a message was sent
 await sendEvent({
@@ -54,7 +61,8 @@ await sendEvent({
 });
 ```
 
-3. **Attach product to customer on purchase** (`/attach`)
+3. **Get a Stripe Checkout URL so the customer can purchase a plan** (`/attach`)
+
 ```typescript
 // Upgrade user to pro plan
 const res = await attachProduct({

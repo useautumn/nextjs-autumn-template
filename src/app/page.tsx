@@ -3,7 +3,7 @@
 import { getOrCreateCustomer } from "./autumn-functions";
 import { useState } from "react";
 import { useEffect } from "react";
-import Intro from "@/components/intro";
+import Intro from "@/components/introduction";
 import EntitledExampleCard from "@/components/application";
 import CustomerDetailsExample from "@/components/billing";
 

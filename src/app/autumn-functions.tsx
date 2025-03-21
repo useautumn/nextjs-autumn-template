@@ -1,7 +1,8 @@
 "use server";
 
-// 3 ENDPOINTS TO GET STARTED
+// ONLY 3 ENDPOINTS NEEDED TO GET STARTED
 
+// Entitled: Check if your user should be allowed to use a feature
 export const entitled = async ({
   customerId,
   featureId,
@@ -25,6 +26,7 @@ export const entitled = async ({
   return data.allowed;
 };
 
+//Events: send a usage event to Autumn to track a user's usage of a feature
 export const sendEvent = async ({
   customerId,
   featureId,
@@ -45,6 +47,8 @@ export const sendEvent = async ({
   });
 };
 
+
+//Attach: get a checkout URL from Autumn so the user can upgrade
 export const attachProduct = async ({
   customerId,
   productId,

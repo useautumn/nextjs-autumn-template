@@ -12,6 +12,7 @@ export default function EntitledExampleCard({
   featureId: string;
   fetchCustomer: () => void;
 }) {
+
   const sendMessageClicked = async () => {
     const allowed = await entitled({
       customerId,
@@ -30,6 +31,7 @@ export default function EntitledExampleCard({
 
     toast.success("Message sent!");
   };
+  
   return (
     <div className="border rounded-lg bg-white overflow-hidden flex flex-col">
       <div className="border-b p-6">

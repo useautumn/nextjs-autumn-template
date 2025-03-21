@@ -10,6 +10,7 @@ export default function CustomerDetailsExample({
   customerData: any;
 }) {
   const { customer, entitlements, products } = customerData;
+  
   const getEntitlement = (featureId: string) => {
     return entitlements.find(
       (entitlement: any) => entitlement.feature_id === featureId
