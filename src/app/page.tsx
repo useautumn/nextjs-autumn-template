@@ -4,11 +4,11 @@ import { getOrCreateCustomer } from "./autumn-functions";
 import { useState } from "react";
 import { useEffect } from "react";
 import Intro from "@/components/introduction";
-import EntitledExampleCard from "@/components/application";
 import CustomerDetailsExample from "@/components/billing";
+import Application from "@/components/application";
 
+// Replace this with your internal user ID
 const CUSTOMER_ID = "theo";
-const FEATURE_ID = "chat-messages";
 
 export default function Home() {
   const [customerData, setCustomerData] = useState<any>(null);
@@ -31,9 +31,8 @@ export default function Home() {
       <Intro />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <EntitledExampleCard
+        <Application
           customerId={CUSTOMER_ID}
-          featureId={FEATURE_ID}
           fetchCustomer={fetchCustomer}
         />
         <CustomerDetailsExample customerData={customerData} />

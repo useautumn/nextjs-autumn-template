@@ -65,6 +65,7 @@ export const attachProduct = async ({
     body: JSON.stringify({
       customer_id: customerId,
       product_id: productId,
+      force_checkout: true
     }),
   });
 

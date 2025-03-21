@@ -29,8 +29,20 @@ export default function CustomerDetailsExample({
     }
   };
 
-  const chatMessages = getEntitlement("chat-messages");
-  const proAnalytics = getEntitlement("pro-analytics");
+  const buyExtraCreditsClicked = async () => {
+    try {
+      const res = await attachProduct({
+        customerId: customer.id,
+        productId: "extra-credits",
+      });
+      window.open(res.checkout_url, "_blank");
+    } catch (error: any) {
+      toast.error(`${error}`);
+    }
+  };
+
+  const messageCredits = getEntitlement("message-credits");
+  const premiumCredits = getEntitlement("premium-credits");
   const hasPro = products.length > 0 && products[0].id === "pro";
 
   return (
@@ -59,20 +71,16 @@ export default function CustomerDetailsExample({
           </div>
 
           <div className="flex items-center justify-between py-2 border-b">
-            <span className="text-sm font-medium">Messages Remaining</span>
+            <span className="text-sm font-medium">Standard Messages Remaining</span>
             <span className="text-sm font-mono bg-stone-50 px-2 py-1 rounded">
-              {chatMessages.unlimited ? "∞" : chatMessages.balance}
+              {messageCredits?.balance || 0}
             </span>
           </div>
 
           <div className="flex items-center justify-between py-2 border-b">
-            <span className="text-sm font-medium">Pro Analytics</span>
-            <span
-              className={`text-sm font-medium ${
-                proAnalytics ? "text-green-600" : "text-red-600"
-              }`}
-            >
-              {proAnalytics ? "Enabled" : "Disabled"}
+            <span className="text-sm font-medium">Premium Messages Remaining</span>
+            <span className="text-sm font-mono bg-stone-50 px-2 py-1 rounded">
+              {premiumCredits?.balance || 0}
             </span>
           </div>
 
@@ -92,16 +100,25 @@ export default function CustomerDetailsExample({
           </div>
         </div>
       </div>
-
-      <div className="p-6 pt-0">
+      <div className="flex gap-2 p-6 pt-0">
+      <div className="w-full pt-0">
         {!hasPro && (
           <button
-            className="w-full bg-purple-600 hover:bg-purple-700 transition-colors"
+            className="w-full"
             onClick={upgradeClicked}
           >
             Upgrade to Pro
           </button>
         )}
+      </div>
+      <div className="w-full pt-0">
+          <button
+            className="w-full"
+            onClick={buyExtraCreditsClicked}
+          >
+            Buy Extra Premium Credits
+          </button>
+      </div>
       </div>
     </div>
   );
