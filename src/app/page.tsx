@@ -4,8 +4,8 @@ import { getOrCreateCustomer } from "./autumn-functions";
 import { useState } from "react";
 import { useEffect } from "react";
 import Intro from "@/components/intro";
-import EntitledExampleCard from "@/components/entitled-example";
-import CustomerDetailsExample from "@/components/billing-example";
+import EntitledExampleCard from "@/components/application";
+import CustomerDetailsExample from "@/components/billing";
 
 const CUSTOMER_ID = "theo";
 const FEATURE_ID = "chat-messages";
