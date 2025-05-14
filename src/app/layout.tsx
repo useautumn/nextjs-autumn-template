@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { AutumnProvider } from "autumn-js/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +27,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-stone-50`}
       >
         <Toaster position="top-right" />
-        {children}
+        <AutumnProvider
+          customerId={"user_123"}
+          customerData={{ name: "John Doe" }}
+        >
+          {children}
+        </AutumnProvider>
       </body>
     </html>
   );

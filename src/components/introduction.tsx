@@ -9,13 +9,12 @@ export default function Intro() {
           Welcome to the Next.js Autumn template
         </h1>
         <p className="text-muted-foreground">
-          Get started with Autumn by setting up your account and exploring the
-          core features.
+          Explore Autumn's core functions and shadcn/ui pricing components.
         </p>
       </div>
 
       {/* Setup Requirements */}
-      <div className="p-6 border rounded-lg bg-stone-50 space-y-4">
+      <div className="p-6 border rounded-xs bg-stone-100 space-y-4">
         <h2 className="font-semibold">Before you get started</h2>
         <ul className="space-y-3 text-sm">
           <li className="flex items-center gap-2">
