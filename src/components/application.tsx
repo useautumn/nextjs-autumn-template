@@ -31,7 +31,7 @@ export default function Application() {
           <div className="space-y-1">
             <h2 className="text-lg font-semibold">AI Chatbot Example</h2>
             <p className="text-sm text-muted-foreground">
-              See how Autumn's feature access and tracking works
+              See how Autumn&apos;s feature access and tracking works
             </p>
           </div>
           <div className="h-8 w-8 rounded-lg bg-purple-50 flex items-center justify-center">

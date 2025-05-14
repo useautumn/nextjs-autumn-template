@@ -9,7 +9,7 @@ export default function Intro() {
           Welcome to the Next.js Autumn template
         </h1>
         <p className="text-muted-foreground">
-          Explore Autumn's core functions and shadcn/ui pricing components.
+          Explore Autumn&apos;s core functions and shadcn/ui pricing components.
         </p>
       </div>
 
