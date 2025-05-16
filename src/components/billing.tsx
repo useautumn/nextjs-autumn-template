@@ -1,6 +1,6 @@
 "use client";
 
-import { CreditCard } from "lucide-react";
+import { CreditCard, Loader2 } from "lucide-react";
 import { useCustomer } from "autumn-js/next";
 import { PricingTable } from "@/components/autumn/pricing-table";
 import { cn } from "@/lib/utils";
@@ -9,7 +9,7 @@ export default function CustomerDetailsExample() {
   const { customer, isLoading } = useCustomer();
 
   return (
-    <div className="flex flex-col gap-4 ">
+    <div className="flex flex-col gap-4 w-full">
       <div className="flex flex-col min-h-52 bg-white border">
         <div className="border-b p-6">
           <div className="flex items-start justify-between">
@@ -26,7 +26,7 @@ export default function CustomerDetailsExample() {
         </div>
         {!customer ? (
           <div className="flex items-center justify-center p-6 h-full w-full">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
+            <Loader2 className="h-4 w-4 animate-spin text-purple-500" />
           </div>
         ) : (
           <div className="p-6 flex flex-col gap-2">
@@ -44,8 +44,12 @@ export default function CustomerDetailsExample() {
           </div>
         )}
       </div>
-      <div className={cn("hidden", !isLoading && "block")}>
+      <div className={cn("hidden space-y-2", !isLoading && "block")}>
         <PricingTable />
+        <p className="text-xs text-muted-foreground text-center">
+          Make a purchase with Stripe&apos;s test card (4242 42...), then test
+          how Autumn handles upgrades, downgrades, renewals etc
+        </p>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { useAutumn, useCustomer } from "autumn-js/next";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import PaywallDialog from "@/components/autumn/paywall-dialog";
+import Link from "next/link";
 
 export default function Application() {
   const [message, setMessage] = useState("");
@@ -25,11 +26,11 @@ export default function Application() {
   };
 
   return (
-    <div className="border rounded-xs bg-white overflow-hidden flex max-w-sm flex-col h-fit">
+    <div className="border rounded-xs bg-white flex w-fit flex-col h-fit">
       <div className="border-b p-6">
         <div className="flex items-start justify-between">
           <div className="space-y-1">
-            <h2 className="text-lg font-semibold">AI Chatbot Example</h2>
+            <h2 className="text-lg font-semibold">AI Chatbot Example App</h2>
             <p className="text-sm text-muted-foreground">
               See how Autumn&apos;s feature access and tracking works
             </p>
@@ -44,9 +45,31 @@ export default function Application() {
         <div className="space-y-2">
           <div className="text-sm font-medium">How it works:</div>
           <ol className="text-sm space-y-2 text-muted-foreground list-decimal list-inside">
-            <li>First calls /check to check message allowance</li>
-            <li>If allowed, calls /track to record the message</li>
-            <li>Updates remaining message count</li>
+            <li>
+              Calls{" "}
+              <span className="font-mono text-foreground underline underline-offset-3 cursor-pointer">
+                <Link
+                  href="https://docs.useautumn.com/features/check"
+                  target="_blank"
+                >
+                  check
+                </Link>
+              </span>{" "}
+              to see if user has messages remaining
+            </li>
+            <li>
+              If allowed, calls{" "}
+              <span className="font-mono text-foreground underline underline-offset-3 cursor-pointer">
+                <Link
+                  href="https://docs.useautumn.com/features/tracking-usage"
+                  target="_blank"
+                >
+                  track
+                </Link>
+              </span>{" "}
+              to record the message usage
+            </li>
+            <li>Refetches the user&apos;s balance to display</li>
           </ol>
         </div>
       </div>

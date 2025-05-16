@@ -8,7 +8,7 @@ export default function Home() {
     <div className="min-h-screen w-full p-6 flex flex-col gap-8 max-w-7xl mx-auto">
       <Intro />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="flex gap-4">
         <CustomerDetailsExample />
         <Application />
       </div>
