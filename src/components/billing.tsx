@@ -14,9 +14,10 @@ export default function CustomerDetailsExample() {
         <div className="border-b p-6">
           <div className="flex items-start justify-between">
             <div className="space-y-1">
-              <h2 className="text-lg font-semibold">Customer Details</h2>
+              <h2 className="text-lg font-semibold">Billing Example</h2>
               <p className="text-sm text-muted-foreground">
-                Current subscription and feature access
+                Test how Autumn handles billing flows for upgrades, downgrades,
+                cancellations, renewals etc.
               </p>
             </div>
             <div className="h-8 w-8 rounded-xs bg-stone-50 flex items-center justify-center">
@@ -47,8 +48,7 @@ export default function CustomerDetailsExample() {
       <div className={cn("hidden space-y-2", !isLoading && "block")}>
         <PricingTable />
         <p className="text-xs text-muted-foreground text-center">
-          Make a purchase with Stripe&apos;s test card (4242 42...), then test
-          how Autumn handles upgrades, downgrades, renewals etc
+          Make a purchase with Stripe&apos;s test card (4242 42...)
         </p>
       </div>
     </div>
