@@ -30,10 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-stone-50`}
       >
         <Toaster position="top-right" />
-        <AutumnProvider
-          backendUrl="http://localhost:3000"
-          customerData={{ name: "John withTestNewbunny" }}
-        >
+        <AutumnProvider backendUrl="http://localhost:3000">
           {children}
         </AutumnProvider>
       </body>

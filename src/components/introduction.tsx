@@ -20,6 +20,19 @@ export default function Intro() {
           <li className="flex items-center gap-2">
             <div className="h-2 w-2 rounded-full bg-stone-300" />
             <span>
+              Define your pricing plans in the{" "}
+              <Link
+                href="https://app.useautumn.com/sandbox/products"
+                className="text-stone-700 underline underline-offset-4 hover:text-stone-900"
+                target="_blank"
+              >
+                Autumn dashboard
+              </Link>
+            </span>
+          </li>
+          <li className="flex items-center gap-2">
+            <div className="h-2 w-2 rounded-full bg-stone-300" />
+            <span>
               Create your Autumn secret key{" "}
               <Link
                 href="https://app.useautumn.com/sandbox/dev"
