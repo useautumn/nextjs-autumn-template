@@ -31,18 +31,20 @@ AUTUMN_SECRET_KEY=am_sk_test_OAFUOL0meFCjpMMmFeU13gHnrEOGAHWp2YTLECyY7k
 This template implements a simple AI chat message app where users can:
 
 - Send messages (with usage limits)
-- Upgrade to a pro plan
+- Upgrade to a pro or ultra plan
 - View their usage and subscription details
 
 ### Key Endpoints
 
-1. **Check if a user can access a feature** (`/entitled`)
+1. **Check if a user can access a feature** (`/check`)
 
 ```typescript
+import { useAutumn } from "autumn-js/react";
+const { check } = useAutumn();
+
 // Check if user can send a message
-const allowed = await entitled({
-  customerId: CUSTOMER_ID,
-  featureId: FEATURE_ID,
+const { data } = await check({
+  featureId: "messages",
 });
 
 if (!allowed) {
@@ -51,13 +53,14 @@ if (!allowed) {
 }
 ```
 
-2. **Track a user's usage of a feature** (`/events`)
+2. **Track a user's usage of a feature** (`/track`)
 
 ```typescript
+const { track } = useAutumn();
+
 // Record that a message was sent
-await sendEvent({
-  customerId: CUSTOMER_ID,
-  featureId: FEATURE_ID,
+await track({
+  featureId: "messages",
 });
 ```
 
@@ -65,12 +68,16 @@ await sendEvent({
 
 ```typescript
 // Upgrade user to pro plan
-const res = await attachProduct({
-  customerId: CUSTOMER_ID,
-  productId: "pro",
-});
-window.open(res.checkout_url, "_blank");
+const { attach } = useAutumn();
+
+const onCheckoutClicked = async () => {
+  await attach({
+    productId: "pro",
+  });
+};
 ```
+
+Our shadcn/ui components also trigger automatically to handle paywalls, upgrades, downgrades, and renewals. If you change the products in Autumn, they will automatically update too, so you don't need to make any code changes.
 
 <!-- ### Additional Features
 
