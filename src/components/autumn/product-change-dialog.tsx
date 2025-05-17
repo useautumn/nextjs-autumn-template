@@ -13,7 +13,7 @@ import {
 } from "@/components/pricing/pricing-dialog";
 
 import { CheckProductFormattedPreview } from "autumn-js";
-import { useAutumn } from "autumn-js/next";
+import { useAutumn } from "autumn-js/react";
 import { getProductChangeTexts } from "@/lib/autumn/get-product-change-texts";
 
 export interface ProductChangeDialogProps {

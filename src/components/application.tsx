@@ -1,5 +1,5 @@
 import { Loader2, MessageSquare } from "lucide-react";
-import { useAutumn, useCustomer } from "autumn-js/next";
+import { useAutumn, useCustomer } from "autumn-js/react";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import PaywallDialog from "@/components/autumn/paywall-dialog";
@@ -16,7 +16,7 @@ export default function Application() {
       dialog: PaywallDialog,
     });
 
-    if (data.allowed) {
+    if (data?.allowed) {
       track({
         featureId: "chat_messages",
       });

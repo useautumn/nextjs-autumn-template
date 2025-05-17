@@ -2,7 +2,7 @@ import {
   PricingCard,
   PricingTable as PricecnPricingTable,
 } from "@/components/pricing/pricing-table";
-import { useAutumn, usePricingTable } from "autumn-js/next";
+import { useAutumn, usePricingTable } from "autumn-js/react";
 import ProductChangeDialog from "./product-change-dialog";
 import { Loader2 } from "lucide-react";
 

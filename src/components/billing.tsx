@@ -1,7 +1,7 @@
 "use client";
 
 import { CreditCard, Loader2 } from "lucide-react";
-import { useCustomer } from "autumn-js/next";
+import { useCustomer } from "autumn-js/react";
 import { PricingTable } from "@/components/autumn/pricing-table";
 import { cn } from "@/lib/utils";
 

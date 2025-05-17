@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-import { AutumnProvider } from "autumn-js/next";
+import { AutumnProvider } from "autumn-js/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,8 +31,8 @@ export default function RootLayout({
       >
         <Toaster position="top-right" />
         <AutumnProvider
-          customerId={"user_123"}
-          customerData={{ name: "John Doe" }}
+          backendUrl="http://localhost:3000"
+          customerData={{ name: "John withTestNewbunny" }}
         >
           {children}
         </AutumnProvider>
