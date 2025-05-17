@@ -1,8 +1,8 @@
 # Next.js Autumn Starter Template
 
-[Autumn](https://useautumn.com) is an open-source layer between Stripe and your application, allowing you to create any pricing model and embed it with a couple lines of code.
+[Autumn](https://useautumn.com) is an open-source layer between Stripe and your application, allowing you to create any pricing model and embed it with a few lines of code.
 
-This template demonstrates how you can set up pricing in just 3 lines of code using Autumn. The example used is a simple AI chat message app.
+This template demonstrates how you can set up pricing for a simple AI chatbot application.
 
 View the example app here: https://nextjs-autumn-template.vercel.app/
 
