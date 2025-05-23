@@ -17,7 +17,7 @@ export default function Application() {
     });
 
     if (data?.allowed) {
-      track({
+      await track({
         featureId: "chat_messages",
       });
       refetch();
