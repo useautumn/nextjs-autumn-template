@@ -17,9 +17,7 @@ export default function Application() {
     });
 
     if (data?.allowed) {
-      await track({
-        featureId: "chat_messages",
-      });
+      await track({ featureId: "chat_messages" });
       refetch();
       setMessage("");
     }
@@ -96,8 +94,8 @@ export default function Application() {
             <Loader2 className="h-4 w-4 animate-spin text-purple-500" />
           ) : (
             <>
-              {customer?.features.chat_messages.balance} /{" "}
-              {customer?.features.chat_messages.included_usage}
+              {customer?.features.chat_messages?.balance} /{" "}
+              {customer?.features.chat_messages?.included_usage}
             </>
           )}
         </div>

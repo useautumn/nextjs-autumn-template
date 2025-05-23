@@ -39,7 +39,7 @@ export default function CustomerDetailsExample() {
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium">Messages used</span>
               <span className="text-sm font-mono bg-stone-50 px-2 py-1 rounded">
-                {customer?.features.chat_messages.usage || 0}
+                {customer?.features.chat_messages?.usage || 0}
               </span>
             </div>
           </div>
